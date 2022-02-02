@@ -26,7 +26,7 @@ It will extend existing PSWG published paper with monitoring and open telemetry.
 - Size of SUT, you are able to scale the size for SUT, as it is blockchain based on k8s.
 
 ### Summary scope of this lab
-- [ ] Start kind with monitoring system.
+- [x] [Start kind with monitoring system.](./k8s.md)
 - [ ] Dashboard for monitoring system.
 - [ ] Deploy SUT.
 - [ ] Deploy traffic generator system.
