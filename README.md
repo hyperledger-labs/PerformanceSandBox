@@ -27,7 +27,7 @@ It will extend existing PSWG published paper with monitoring and open telemetry.
 
 ### Summary scope of this lab
 - [x] [Start kind with monitoring system.](./k8s.md)
-- [ ] Dashboard for monitoring system.
+- [x] [Dashboard for monitoring system.(currently support Hyperledger Fabric)](./dashboard.md)
 - [ ] Deploy SUT.
 - [ ] Deploy traffic generator system.
 - [ ] Deploy/Local Image support.
