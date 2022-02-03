@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tape
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true" 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tape
+  template:
+    metadata:
+      labels:
+        app: tape
+    spec:
+      containers:
+      - name: tape
+        image: ghcr.io/hyperledger-twgc/tape:edge
+        env:
+          - name: TAPE_LOGLEVEL
+            value: debug
+        command:
+          - tape
+          - "-c"
+          - "/tmp/tapeconfig.yaml"
+          - "-n"
+          - "500"
+          #- sleep
+          #- "3600"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: configmap-volume
+            mountPath: /tmp
+      volumes:
+        - name: configmap-volume
+          configMap:
+              name: fabric-tape-sample-config
+  #restartPolicy: Always
