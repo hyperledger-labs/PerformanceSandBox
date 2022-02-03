@@ -25,35 +25,35 @@ You are free to skip some of the steps, if you want to deploy performance sandbo
 
 ## Steps
 1. [kind](https://kind.sigs.k8s.io)
-```bash
+```shell
 ./infra.sh up
 ```
 
 optional, if you have a image listed in find image_list, you are able to run script below to load local image to kind.
-```bash
+```shell
 ./infra.sh load_image
 ```
 `image_list` looks like:
-```bash
+```shell
 ghcr.io/hyperledger-twgc/tape:edge
 ```
 
 2. [prometheus operator](https://github.com/prometheus-operator/kube-prometheus)
-```bash
+```shell
 ./infra.sh prometheus
 ```
 
 3. [jaeger operator](https://github.com/jaegertracing/jaeger-operator)
-```bash
+```shell
 ./infra.sh jaeger
 ```
 
 4. verify 
-```bash
+```shell
 ./infra.sh verify
 ```
 if everything completed, it looks like:
-```bash
+```shell
 Verify prometheus and jaeger, in monitoring namespace
 NAME                                 READY   STATUS    RESTARTS   AGE
 alertmanager-main-0                  2/2     Running   0          2m45s
@@ -77,12 +77,12 @@ Complete Verify prometheus and jaeger, in observability namespace
 ```
 
 5. port forward
-```bash
+```shell
 ./infra.sh portforward
 ```
 access http://localhost:3000 and http://loalhost:16686
 
 ## HouseKeeping
-```bash
+```shell
 ./infra.sh down
 ```
