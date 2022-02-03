@@ -29,8 +29,8 @@ It will extend existing PSWG published paper with monitoring and open telemetry.
 - [x] [Start kind with monitoring system.](./doc/k8s.md)
 - [x] [Dashboard for monitoring system.](./doc/dashboard.md)
 - [x] [Deploy SUT.](./doc/SUT.md)
-- [ ] Deploy traffic generator system.
-- [ ] Deploy/Local Image support.
+- [x] [Deploy traffic generator system.](./doc/Traffic.md)
+- [x] [Deploy/Local Image support.](./doc/SUT.md)
 
 ## Initial Committers
 - [Sam Yuan](https://github.com/SamYuan1990) - Sam Yuan
