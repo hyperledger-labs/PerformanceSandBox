@@ -4,7 +4,7 @@
 The Performance Sandbox is a Sandbox for Hyperledger Projects Performance research usage. It allows easy use of performance related works with this sandbox lab.
 
 ## Scope of Lab
-![What is Performance Sandbox](./images/PerformanceSandBox.png "What is Perfomance Sandbox")
+![What is Performance Sandbox](./doc/images/PerformanceSandBox.png "What is Perfomance Sandbox")
 
 ### Overall
 As the picture above, it uses kubernetes(as kind) as infrastructure, integrated with monitoring and open tracing(or say open telemetry).
@@ -25,10 +25,10 @@ It will extend existing PSWG published paper with monitoring and open telemetry.
 - Traffic generator, so far deployed demo with Tape, as it is k8s development. It can be replaced with Caliper or Jmeter. Tape is a sample performance tool for Hyperledger Fabric without SDK(close to blockchain network itself). Caliper is based on Hyperledger Fabric SDK(more close to application level). For Jmeter, assuming you expose RESTFUL endpoint to enduser. You may need use Jmeter to create traffic as end to end performance research.
 - Size of SUT, you are able to scale the size for SUT, as it is blockchain based on k8s.
 
-### Summary scope of this lab
-- [x] [Start kind with monitoring system.](./k8s.md)
-- [x] [Dashboard for monitoring system.(currently support Hyperledger Fabric)](./dashboard.md)
-- [ ] Deploy SUT.
+### Summary scope of this lab(currently support Hyperledger Fabric)
+- [x] [Start kind with monitoring system.](./doc/k8s.md)
+- [x] [Dashboard for monitoring system.](./doc/dashboard.md)
+- [x] [Deploy SUT.](./doc/SUT.md)
 - [ ] Deploy traffic generator system.
 - [ ] Deploy/Local Image support.
 
