@@ -1,15 +1,20 @@
 # Definition of nodes
 peer1: &peer1
   addr: org1-peer1:7051
+  org: org1
   tls_ca_cert: /tmp/org1-tls-ca.pem
 
 peer2: &peer2
   addr: org2-peer1:7051
+  org: org2
   tls_ca_cert: /tmp/org2-tls-ca.pem
 
 orderer1: &orderer1
   addr: org0-orderer1:6050
+  org: org0
   tls_ca_cert: /tmp/org0-tls-ca.pem 
+
+policyFile: /tmp/Logic.rego
 
 # Nodes to interact with
 endorsers:

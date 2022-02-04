@@ -46,6 +46,7 @@ function config_tape_sample() {
   # tls cert
   # config file
   cp ./scripts/tapetemplate ./build/tape/tapeconfig.yaml
+  cp ./scripts/Logic.rego ./build/tape/Logic.rego
 
   kubectl -n $NS delete configmap fabric-tape-sample-config || true
   kubectl -n $NS create configmap fabric-tape-sample-config --from-file=./build/tape/
