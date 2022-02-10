@@ -37,6 +37,8 @@ function main() {
         verify
     elif [ "${MODE}" == "channel" ]; then
         create_channel
+    elif [ "${MODE}" == "jaeger" ]; then
+        jaeger
     elif [ "${MODE}" == "chaincode" ]; then
         action=$1
         shift
@@ -64,6 +66,7 @@ function print_help() {
     echo "./network.sh chaincode deploy for deploy a chaincode to channel"
     echo "./network.sh channel invoke for send a tx"
     echo "./network.sh channel query for query data"
+    echo "./network.sh jaeger for restart jaeger"
 }
 
 function verify() {

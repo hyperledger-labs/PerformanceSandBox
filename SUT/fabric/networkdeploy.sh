@@ -392,15 +392,31 @@ function launch() {
     | kubectl -n $NS apply -f -
 }
 
+function clean_up_old_rs() {
+  target_rs=$1
+  echo "${target_rs}"
+  kubectl get rs | grep $target_rs
+  for rs in `kubectl get rs | grep $target_rs`; do
+        kubectl delete rs $rs || true
+  done   
+}
+
 function launch_orderers() {
   echo "Launching orderers"
 
   launch ./kube/org0/org0-orderer1.yaml
-  launch ./kube/org0/org0-orderer2.yaml
-  launch ./kube/org0/org0-orderer3.yaml
-
+  sleep 10
+  clean_up_old_rs org0-orderer
   kubectl -n $NS rollout status deploy/org0-orderer1
+
+  launch ./kube/org0/org0-orderer2.yaml
+  sleep 10
+  clean_up_old_rs org0-orderer2
   kubectl -n $NS rollout status deploy/org0-orderer2
+
+  launch ./kube/org0/org0-orderer3.yaml
+  sleep 10
+  clean_up_old_rs org0-orderer3
   kubectl -n $NS rollout status deploy/org0-orderer3
 
   echo "Complete launching orderers"
@@ -410,14 +426,37 @@ function launch_peers() {
   echo "Launching peers"
 
   launch ./kube/org1/org1-peer1.yaml
-  launch ./kube/org1/org1-peer2.yaml
-  launch ./kube/org2/org2-peer1.yaml
-  launch ./kube/org2/org2-peer2.yaml
-
+  sleep 10
+  clean_up_old_rs org1-peer1
   kubectl -n $NS rollout status deploy/org1-peer1
+
+  launch ./kube/org1/org1-peer2.yaml
+  sleep 10
+  clean_up_old_rs org1-peer2
   kubectl -n $NS rollout status deploy/org1-peer2
+
+  launch ./kube/org2/org2-peer1.yaml
+  sleep 10
+  clean_up_old_rs org2-peer1
   kubectl -n $NS rollout status deploy/org2-peer1
+
+  launch ./kube/org2/org2-peer2.yaml
+  sleep 10
+  clean_up_old_rs org2-peer2
   kubectl -n $NS rollout status deploy/org2-peer2
 
   echo "Complete launching peers"
+}
+
+function jaeger() {
+  echo "Restart jaeger"
+  kubectl delete Jaeger simplest
+kubectl apply -f - <<EOF
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: simplest
+EOF
+nohup kubectl port-forward svc/simplest-query 16686 &
+  echo "Complete restart jaeger"
 }

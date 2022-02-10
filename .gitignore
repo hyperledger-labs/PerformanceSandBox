@@ -1,4 +1,4 @@
 image_list
-nohup.out
+*.out
 SUT/fabric/build
 Traffic/fabric/build

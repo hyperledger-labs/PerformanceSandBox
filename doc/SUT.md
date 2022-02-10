@@ -33,7 +33,16 @@ To use your local repository:
 export CONTAINER_REGISTRY=localhost:5000
 ```
 
+## Clean up
+```shell
+./network.sh down
+```
+
+## Notice:
+You may need to rerun `./infra.sh jaeger` and `./infra.sh portforward` to restart jaeger after clean up.
+
 ## ToDo/TBD: 
+- [ ] jeager operator issue with portforward and deployment.
 - [ ] https://github.com/hyperledger/bevel
 - [ ] https://github.com/hyperledger-labs/minifabric
 
