@@ -150,10 +150,10 @@ function jaeger_init() {
     kubectl create -n observability -f ./kube/jaeger/deploy/role.yaml
     kubectl create -n observability -f ./kube/jaeger/deploy/role_binding.yaml
     kubectl create -n observability -f ./kube/jaeger/deploy/operator.yaml
-    kubectl create -n observability -f ./kube/jaeger/deploy/cluster_role.yaml
-    kubectl create -n observability -f ./kube/jaeger//deploy/cluster_role_binding.yaml
+    kubectl apply -f ./kube/jaeger/deploy/cluster_role.yaml
+    kubectl apply -f ./kube/jaeger/deploy/cluster_role_binding.yaml
     sleep 30
-kubectl apply -n observability -f - <<EOF
+kubectl apply -f - <<EOF
 apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
@@ -183,19 +183,18 @@ function check_prereqs() {
 }
 
 function verify() {
-    echo "Verify prometheus and jaeger, in monitoring namespace"
+    echo "Verify prometheus and jaeger, in all namespaces"
     kubectl get po -n monitoring
-    echo "Complete Verify prometheus and jaeger, in monitoring namespace"
-    echo "Verify prometheus and jaeger, in observability namespace"
     kubectl get po -n observability
-    echo "Complete Verify prometheus and jaeger, in observability namespace"
-
+    kubectl get po
+    echo "Complete Verify prometheus and jaeger,in all namespaces"
 }
 
 function portforward() {
     echo "Start port forwarding in backend"
     nohup kubectl --namespace monitoring port-forward svc/grafana 3000 &
-    nohup kubectl --namespace observability port-forward svc/simplest-query 16686 &
+    nohup kubectl port-forward svc/simplest-query 16686 &
+    echo "end port forwarding in backend"
 }
 
 function load_image() {

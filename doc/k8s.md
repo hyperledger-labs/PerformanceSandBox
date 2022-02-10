@@ -54,26 +54,26 @@ ghcr.io/hyperledger-twgc/tape:edge
 ```
 if everything completed, it looks like:
 ```shell
-Verify prometheus and jaeger, in monitoring namespace
+% ./infra.sh verify
+Verify prometheus and jaeger, in all namespaces
 NAME                                 READY   STATUS    RESTARTS   AGE
-alertmanager-main-0                  2/2     Running   0          2m45s
-alertmanager-main-1                  2/2     Running   0          2m45s
-alertmanager-main-2                  2/2     Running   0          2m45s
-blackbox-exporter-65f6b65965-5h2n4   3/3     Running   0          9m1s
-grafana-79ccfb4557-85fcc             1/1     Running   0          9m
-kube-state-metrics-5498b5d7b-wggng   3/3     Running   0          9m
-node-exporter-p2w4l                  2/2     Running   0          8m59s
-prometheus-adapter-6f6b6c667-h2fjr   1/1     Running   0          8m59s
-prometheus-adapter-6f6b6c667-t5mg5   1/1     Running   0          8m59s
-prometheus-k8s-0                     2/2     Running   0          2m44s
-prometheus-k8s-1                     1/2     Running   0          2m44s
-prometheus-operator-8bdc4bdd-vs9vn   2/2     Running   0          8m59s
-Complete Verify prometheus and jaeger, in monitoring namespace
-Verify prometheus and jaeger, in observability namespace
+alertmanager-main-0                  2/2     Running   0          113s
+alertmanager-main-1                  2/2     Running   0          113s
+alertmanager-main-2                  2/2     Running   0          113s
+blackbox-exporter-65f6b65965-gg25r   3/3     Running   0          2m1s
+grafana-79ccfb4557-mmtbj             1/1     Running   0          2m1s
+kube-state-metrics-5498b5d7b-hsv7r   3/3     Running   0          2m1s
+node-exporter-4l8l4                  2/2     Running   0          2m
+prometheus-adapter-6f6b6c667-4ccpl   1/1     Running   0          2m
+prometheus-adapter-6f6b6c667-xhtwc   1/1     Running   0          2m
+prometheus-k8s-0                     2/2     Running   0          111s
+prometheus-k8s-1                     2/2     Running   0          111s
+prometheus-operator-8bdc4bdd-xdlm5   2/2     Running   0          2m
 NAME                               READY   STATUS    RESTARTS   AGE
-jaeger-operator-5977dbf59f-955sh   1/1     Running   0          7m27s
-simplest-75977cbc89-lltdp          1/1     Running   0          89s
-Complete Verify prometheus and jaeger, in observability namespace
+jaeger-operator-5f5dcf7bf5-6zhrk   1/1     Running   0          105s
+NAME                        READY   STATUS    RESTARTS   AGE
+simplest-75977cbc89-w6xmx   1/1     Running   0          73s
+Complete Verify prometheus and jaeger,in all namespaces
 ```
 
 5. port forward
