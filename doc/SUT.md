@@ -41,6 +41,14 @@ export CONTAINER_REGISTRY=localhost:5000
 ## Notice:
 You may need to rerun `./infra.sh jaeger` and `./infra.sh portforward` to restart jaeger after clean up.
 
+## Deployment intergration
+Pre discussed with Cello meeting. For any kind of Hyperledger Fabric deployment tools, such as Cello(in this chapter, we will call it as deployment tool for short in following). Tasks below should be followed/checked for intergration between Performance Sandbox and deployment tool.
+- [ ] Deployment tool should able to support k8s deployment. (this part can be done with a document as guide)
+- [ ] We are able to following the "hello world" guidelines to deploy Hyperledger Fabric on k8s by deployment tool. (this part can be done with a document as guide)
+- [ ] Deployment tool should able to support any kind of prometheus and jaeger system. In PerformanceSandBox we used prometheus and jaeger operator, if needed, there need some code changes.
+- [ ] Deployment tool should able to support any kind of Hyperledger Fabric Application. For ex either Caliper or Tape needs certs, network info, chaincode info etc for making traffic to SUT. We can following deployment tool's guidelines for blockchain application to deploy Caliper and Tape.
+- [ ] Deployment tool should able to support image upgrade, and customize image for Hyperledger Fabric.
+
 ## ToDo/TBD: 
 - [ ] jeager operator issue with portforward and deployment.
 - [ ] https://github.com/hyperledger/bevel
