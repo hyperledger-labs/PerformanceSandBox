@@ -26,6 +26,7 @@ function network_up() {
     # Test Network
     echo "Step 4/4, set up ECert CA"
     create_local_MSP
+    couchdb
     launch_orderers
     launch_peers
     
@@ -459,4 +460,15 @@ metadata:
 EOF
 nohup kubectl port-forward svc/simplest-query 16686 &
   echo "Complete restart jaeger"
+}
+
+function couchdb() {
+  echo "Launching couchdb"
+
+  launch ./kube/org1/org1-peer1-couchdb.yaml
+  launch ./kube/org1/org1-peer2-couchdb.yaml
+  launch ./kube/org2/org2-peer1-couchdb.yaml
+  launch ./kube/org2/org2-peer2-couchdb.yaml
+
+  echo "Complete Launching couchdb"
 }

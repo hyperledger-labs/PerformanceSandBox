@@ -29,7 +29,10 @@ data:
   CORE_PEER_FILESYSTEMPATH: /var/hyperledger/fabric/data/org2-peer2.org2.example.com
   CORE_LEDGER_SNAPSHOTS_ROOTDIR: /var/hyperledger/fabric/data/org2-peer2.org2.example.com/snapshots
   CORE_METRICS_PROVIDER: prometheus
-
+  CORE_LEDGER_STATE_STATEDATABASE: CouchDB
+  CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS: org2peer2couchdb:5984
+  CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME: admin
+  CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD: adminpw
 ---
 apiVersion: apps/v1
 kind: Deployment
