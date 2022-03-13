@@ -31,6 +31,8 @@ It will extend existing PSWG published paper with monitoring and open telemetry.
 - [x] [Deploy SUT.](./doc/SUT.md)
 - [x] [Deploy traffic generator system.](./doc/Traffic.md)
 - [x] [Deploy/Local Image support.](./doc/SUT.md)
+- [x] [Deploy Sample application support.](./doc/App.md)
+- [x] [Test Sample application with jmeter](./doc/App.md)
 
 ## FAQ
 [here](https://github.com/hyperledger-labs/PerformanceSandBox/wiki/FAQ)
