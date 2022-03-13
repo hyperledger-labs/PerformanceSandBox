@@ -2,3 +2,5 @@ image_list
 *.out
 SUT/fabric/build
 Traffic/fabric/build
+App/fabric/build
+temp.yaml

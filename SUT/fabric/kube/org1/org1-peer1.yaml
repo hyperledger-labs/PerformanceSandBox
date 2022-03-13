@@ -72,7 +72,7 @@ spec:
       initContainers:
         - name: fabric-ccs-builder
           image: ghcr.io/hyperledgendary/fabric-ccs-builder
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           command: [sh, -c]
           args: ["cp /go/bin/* /var/hyperledger/fabric/chaincode/ccs-builder/bin/"]
           volumeMounts:
