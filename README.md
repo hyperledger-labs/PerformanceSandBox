@@ -1,5 +1,7 @@
 # PerformanceSandBox
 
+![PR CI workflow](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/CI.yml/badge.svg)![Weekly CI workflow](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/weekly.yml/badge.svg)
+
 ## Short Description
 The Performance Sandbox is a Sandbox for Hyperledger Projects Performance research usage. It allows easy use of performance related works with this sandbox lab.
 
