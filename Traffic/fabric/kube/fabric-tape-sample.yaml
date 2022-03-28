@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tape
-        image: ghcr.io/hyperledger-twgc/tape:edge
+        image: ghcr.io/hyperledger-twgc/tape
         env:
           - name: TAPE_LOGLEVEL
             value: debug
