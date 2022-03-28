@@ -17,7 +17,7 @@
 ---
 ## 先决条件
 - [git](https://github.com/)
-- [docker]（https://www.docker.com/）
+- [docker](https://www.docker.com/）
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [kind](https://kind.sigs.k8s.io)
 
@@ -43,12 +43,12 @@ ghcr.io/hyperledger-twgc/tape:edge
 ./infra.sh prometheus
 ```
 
-3.【jaeger operator】(https://github.com/jaegertracing/jaeger-operator)
+3. [jaeger operator](https://github.com/jaegertracing/jaeger-operator)
 ```shell
 ./infra.sh jaeger
 ```
 
-4.验证
+4. 验证
 ```shell
 ./infra.sh verify
 ```
