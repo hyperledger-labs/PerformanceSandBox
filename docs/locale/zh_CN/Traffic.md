@@ -1,8 +1,8 @@
 # 目前只支持 Hyperledger Fabric
 
 ## 用法
-```外壳
-cd ./交通/面料
+```shell
+cd ./Traffic/fabric
 ./tape.sh
 ```
 
