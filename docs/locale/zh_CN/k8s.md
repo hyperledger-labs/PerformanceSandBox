@@ -1,7 +1,6 @@
 
 ---
-
-## 表中的内容
+## 目录
 
 * [介绍](#introduce)
 * [先决条件](#prerequisites)
@@ -10,52 +9,52 @@
 
 ---
 ## 介绍
-本文档是为性能沙箱初始化 k8s 集群的指南。 k8s 集群应该包含 k8s、prometheus 和 jaeger。通过以下步骤，您将拥有一个基于 [kind](https://kind.sigs.k8s.io) 的 k8s 集群
-[prometheus 运算符](https://github.com/prometheus-operator/kube-prometheus) 和 [jaeger 运算符](https://github.com/jaegertracing/jaeger-operator)。
+本文档是为性能沙箱初始化 k8s 集群的指南。 k8s 集群将会包含 k8s、prometheus 和 jaeger等功能。通过以下步骤，您将拥有一个基于 [kind](https://kind.sigs.k8s.io) 的 k8s 集群
+[prometheus operator](https://github.com/prometheus-operator/kube-prometheus) 和 [jaeger 运算符](https://github.com/jaegertracing/jaeger-operator)。
 
-如果您想在自己的 k8s 集群上部署性能沙箱，或者您已经有一个带有 [prometheus operator] 的 k8s 集群，您可以跳过一些步骤（https://github.com/prometheus-operator/kube-prometheus ) 和 [jaeger 运算符](https://github.com/jaegertracing/jaeger-operator)。
+如果您想在自己的 k8s 集群上部署性能沙箱，或者您已经有一个带有 [prometheus operator] 的 k8s 集群，您可以跳过一些步骤（https://github.com/prometheus-operator/kube-prometheus ) 和 [jaeger operator](https://github.com/jaegertracing/jaeger-operator)。
 
 ---
 ## 先决条件
 - [git](https://github.com/)
-- [码头工人]（https://www.docker.com/）
+- [docker]（https://www.docker.com/）
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [种类](https://kind.sigs.k8s.io)
+- [kind](https://kind.sigs.k8s.io)
 
 ---
 
-## 脚步
-1. [种类](https://kind.sigs.k8s.io)
-```外壳
+## 步骤
+1. [kind](https://kind.sigs.k8s.io)
+```shell
 ./infra.sh up
 ```
 
 可选，如果您在 find image_list 中列出了图像，您可以运行下面的脚本将本地图像加载到 kind。
-```外壳
+```shell
 ./infra.sh load_image
 ```
 `image_list` 看起来像：
-```外壳
+```shell
 ghcr.io/hyperledger-twgc/tape:edge
 ```
 
-2. [prometheus 算子](https://github.com/prometheus-operator/kube-prometheus)
-```外壳
-./infra.sh 普罗米修斯
+2. [prometheus operator](https://github.com/prometheus-operator/kube-prometheus)
+```shell
+./infra.sh prometheus
 ```
 
-3.【jaeger算子】(https://github.com/jaegertracing/jaeger-operator)
-```外壳
-./infra.sh 杰格
+3.【jaeger operator】(https://github.com/jaegertracing/jaeger-operator)
+```shell
+./infra.sh jaeger
 ```
 
 4.验证
-```外壳
-./infra.sh 验证
+```shell
+./infra.sh verify
 ```
 如果一切都完成了，它看起来像：
-```外壳
-% ./infra.sh 验证
+```shell
+% ./infra.sh verify
 在所有命名空间中验证 prometheus 和 jaege
 名称                               就绪          状态        重新开始            年龄
 alertmanager-main-0                2/2          运行         0                  113s
@@ -78,12 +77,12 @@ jaeger-operator-5f5dcf7bf5-6zhrk   1/1          运行         0           105s
 ```
 
 5.端口转发
-```外壳
-./infra.sh 端口转发
+```shell
+./infra.sh portforward
 ```
 访问 http://localhost:3000 和 http://loalhost:16686
 
 ## 管家
-```外壳
-./infra.sh 向下
+```shell
+./infra.sh down
 ```
