@@ -144,3 +144,9 @@ function activate_chaincode_for() {
 
   echo "Complete activating chaincode ${CHAINCODE_ID}"
 }
+
+function buildchaincode() {
+  local path=$1
+  docker build $path --tag=${CHAINCODE_NAME}
+  kind load docker-image ${CHAINCODE_NAME}
+}

@@ -1,12 +1,13 @@
 # PerformanceSandBox
 
-![PR CI workflow](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/CI.yml/badge.svg)![Weekly CI workflow](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/weekly.yml/badge.svg)
+![Github workflow test](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/CI.yml/badge.svg)
+![Github workflow test](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/NFTSample.yml/badge.svg)
 
 ## Short Description
 The Performance Sandbox is a Sandbox for Hyperledger Projects Performance research usage. It allows easy use of performance related works with this sandbox lab.
 
 ## Scope of Lab
-![What is Performance Sandbox](./doc/images/PerformanceSandBox.png "What is Perfomance Sandbox")
+![What is Performance Sandbox](./docs/images/PerformanceSandBox.png "What is Perfomance Sandbox")
 
 ### Overall
 As the picture above, it uses kubernetes(as kind) as infrastructure, integrated with monitoring and open tracing(or say open telemetry).
@@ -28,13 +29,14 @@ It will extend existing PSWG published paper with monitoring and open telemetry.
 - Size of SUT, you are able to scale the size for SUT, as it is blockchain based on k8s.
 
 ### Summary scope of this lab(currently support Hyperledger Fabric)
-- [x] [Start kind with monitoring system.](./doc/k8s.md)
-- [x] [Dashboard for monitoring system.](./doc/dashboard.md)
-- [x] [Deploy SUT.](./doc/SUT.md)
-- [x] [Deploy traffic generator system.](./doc/Traffic.md)
-- [x] [Deploy/Local Image support.](./doc/SUT.md)
-- [x] [Deploy Sample application support.](./doc/App.md)
-- [x] [Test Sample application with jmeter](./doc/App.md)
+- [x] [Start kind with monitoring system.](./docs/k8s.md)
+- [x] [Dashboard for monitoring system.](./docs/dashboard.md)
+- [x] [Deploy SUT.](./docs/SUT.md)
+- [x] [Deploy Your own chaincode for test as NFT.](./docs/SUT.md)
+- [x] [Deploy traffic generator system.](./docs/Traffic.md)
+- [x] [Deploy/Local Image support.](./docs/SUT.md)
+- [x] [Deploy Sample application support.](./docs/App.md)
+- [x] [Test Sample application with jmeter](./docs/App.md)
 
 ## FAQ
 [here](https://github.com/hyperledger-labs/PerformanceSandBox/wiki/FAQ)
