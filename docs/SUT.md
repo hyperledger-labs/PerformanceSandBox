@@ -13,10 +13,10 @@ cd ./SUT/fabric
 <summary>Click here to use your own chaincode as sample as NFT</summary>
 
 ```shell
-./network buildchaincode ./chaincode/nftsamplecode
-export TEST_NETWORK_CHAINCODE_IMAGE=nftsample:latest
+export TEST_NETWORK_CHAINCODE_IMAGE=localhost:5000/nftsample:latest
 export TEST_NETWORK_CHAINCODE_NAME=nftsample
 export TEST_NETWORK_CHAINCODE_LABEL=nft_1.0
+./network.sh buildchaincode ./chaincode/nftsamplecode
 ```
 </details>
 

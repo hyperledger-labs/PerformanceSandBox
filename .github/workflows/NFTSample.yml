@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
 env:
-  TEST_NETWORK_CHAINCODE_IMAGE: nftsample:latest
+  TEST_NETWORK_CHAINCODE_IMAGE: localhost:5000/nftsample:latest
   TEST_NETWORK_CHAINCODE_NAME: nftsample
   TEST_NETWORK_CHAINCODE_LABEL: nft_1.0
 jobs:
@@ -46,10 +46,6 @@ jobs:
         run: cd ./SUT/fabric && ./network.sh buildchaincode ./chaincode/nftsamplecode
       - name: set up chaincode pod
         run: cd ./SUT/fabric && ./network.sh chaincode deploy
-      - name: invoke chaincode for test
-        run: cd ./SUT/fabric && ./network.sh chaincode invoke '' 
-      - name: query invoke result
-        run: cd ./SUT/fabric && ./network.sh chaincode query ''
       - name: run Tape based traffic
         run:  cd ./Traffic/fabric && ./tape.sh NFT
       - name: sleep a while
