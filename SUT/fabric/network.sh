@@ -39,6 +39,8 @@ function main() {
         create_channel
     elif [ "${MODE}" == "jaeger" ]; then
         jaeger
+    elif [ "${MODE}" == "buildchaincode" ]; then
+        buildchaincode $1
     elif [ "${MODE}" == "chaincode" ]; then
         action=$1
         shift

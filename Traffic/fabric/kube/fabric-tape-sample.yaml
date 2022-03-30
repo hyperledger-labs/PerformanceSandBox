@@ -17,6 +17,7 @@ spec:
       containers:
       - name: tape
         image: ghcr.io/hyperledger-twgc/tape
+        imagePullPolicy: IfNotPresent
         env:
           - name: TAPE_LOGLEVEL
             value: debug

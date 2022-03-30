@@ -5,6 +5,7 @@ set -o errexit
 #set -x
 
 function chaincode_deploy() {
+    #set -x
     echo "starting chaincode deployment"
     install_chaincode
     launch_chaincode_service org1 $CHAINCODE_ID $CHAINCODE_IMAGE
@@ -143,4 +144,11 @@ function activate_chaincode_for() {
   ' | exec kubectl -n $NS exec deploy/${org}-admin-cli -c main -i -- /bin/bash
 
   echo "Complete activating chaincode ${CHAINCODE_ID}"
+}
+
+function buildchaincode() {
+  #set -x
+  local path=$1
+  docker build $path --tag=${CHAINCODE_IMAGE}
+  kind load docker-image ${CHAINCODE_IMAGE}
 }

@@ -46,6 +46,10 @@ function config_tape_sample() {
   # tls cert
   # config file
   cp ./scripts/tapetemplate ./build/tape/tapeconfig.yaml
+  
+  if [ "${1}" == "NFT" ]; then
+    cp -f ./scripts/tapetemplateNFT ./build/tape/tapeconfig.yaml
+  fi
   cp ./scripts/Logic.rego ./build/tape/Logic.rego
 
   kubectl -n $NS delete configmap fabric-tape-sample-config || true

@@ -7,6 +7,20 @@ Launch the network, create a channel, and deploy the [basic-asset-transfer](./as
 cd ./SUT/fabric
 ./network.sh up
 ./network.sh channel
+```
+
+<details>
+<summary>Click here to use your own chaincode as sample as NFT</summary>
+
+```shell
+export TEST_NETWORK_CHAINCODE_IMAGE=localhost:5000/nftsample:latest
+export TEST_NETWORK_CHAINCODE_NAME=nftsample
+export TEST_NETWORK_CHAINCODE_LABEL=nft_1.0
+./network.sh buildchaincode ./chaincode/nftsamplecode
+```
+</details>
+
+```shell
 ./network.sh chaincode deploy
 ```
 
