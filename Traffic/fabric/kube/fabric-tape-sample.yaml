@@ -23,12 +23,11 @@ spec:
             value: debug
         command:
           - tape
+          # - "endorsementOnly" for endorsement only mode for query
           - "-c"
           - "/tmp/tapeconfig.yaml"
           - "-n"
           - "500"
-          #- sleep
-          #- "3600"
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - name: configmap-volume
