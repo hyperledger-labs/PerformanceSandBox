@@ -7,7 +7,7 @@ ARG ALPINE_VER=3.12
 
 FROM golang:${GO_VER}-alpine${ALPINE_VER}
 
-ENV GOPROXY=https://goproxy.cn,direct
+# ENV GOPROXY=https://goproxy.cn,direct
 WORKDIR /go/src/github.com/msalimbene/hlp-721
 COPY . .
 
