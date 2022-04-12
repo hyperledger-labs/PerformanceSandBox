@@ -9,7 +9,7 @@ env:
   TEST_NETWORK_CHAINCODE_NAME: nftsample
   TEST_NETWORK_CHAINCODE_LABEL: nft_1.0
 jobs:
-  ci:
+  bringYourChianCodeAsNFT:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
