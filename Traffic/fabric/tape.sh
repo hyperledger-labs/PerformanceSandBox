@@ -8,7 +8,7 @@ NS=default
 
 function main() {
   #const tape config sample
-  config_tape_sample
+  config_tape_sample $1
   #start tape
   rollout_tape_sample
 }
@@ -69,4 +69,4 @@ function rollout_tape_sample() {
   echo "Complete tape init"
 }
 
-main
+main $1
