@@ -33,7 +33,7 @@ orderer: *orderer1
 
 # Invocation configs
 channel: mychannel
-chaincode: asset-transfer-basic
+chaincode: nftsample
 args:
   - MintWithTokenURI
   - randomString8
