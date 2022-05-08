@@ -8,7 +8,6 @@ NS=default
 
 function main() {
   #const tape config sample
-  echo $1
   config_tape_sample $1
   #start tape
   rollout_tape_sample
