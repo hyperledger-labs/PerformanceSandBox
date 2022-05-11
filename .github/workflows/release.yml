@@ -11,4 +11,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
-        generate_release_notes: true
+        with:
+          generate_release_notes: true
