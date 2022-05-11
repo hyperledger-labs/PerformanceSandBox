@@ -21,7 +21,7 @@ jobs:
       - name: check version
         run: kubectl version || true
       - name: k8s
-        run: minikube start && alias kubectl="minikube kubectl --"
+        run: minikube start && minikube addons enable ingress && minikube addons enable ingress-dns && alias kubectl="minikube kubectl --"
       - name: infra prometheus
         run: ./infra.sh prometheus
       - name: infra jaeger
