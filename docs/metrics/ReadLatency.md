@@ -5,7 +5,7 @@ Read operations for Hyperledger Fabric, almost query or endorsement phase for a 
 - There is no change to state.
 - Fetching data in the process of validating transactions.
 - From external system.
-- No caching is considered for a "prue" read.
+- No caching is considered for a "pure" read.
 
 ref to https://www.hyperledger.org/learn/publications/blockchain-performance-metrics
 
