@@ -25,3 +25,6 @@ In general, once we decided which data to be query on fabric network.
 1. And the endorsement will running on each peer.
 1. Once the proposals been responsed from peers, some time we need additional check for as result from peers should be same.
 
+## For P99
+We are able to find P99 for this metric by grafana and sample as Tape implementation
+![Show 9PP Read Latency from Tape](../images/TapeLatency.png "Show 9PP Read Latency from Tape")
