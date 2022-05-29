@@ -23,3 +23,7 @@ In general, once we decided which data to be query on fabric network, according 
 1. once commit process is completed, then client as tape will received the response for the tx request been send.
 
 > note: In sample above, we works in a synchronization way, and for endorsement and commit threshold/network threshold, we use a single peer as sample.
+
+## For P99
+We are able to find P99 for this metric by grafana and sample as Tape implementation
+![Show 9PP Read Latency from Tape](../images/TapeLatency.png "Show 9PP Read Latency from Tape")
