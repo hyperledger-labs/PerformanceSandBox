@@ -1,9 +1,11 @@
-name: GitHub Actions CI
+name: podman
 on:
+  pull_request:
+  push:
   schedule:
     - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
 jobs:
-  ci:
+  podman:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -12,6 +14,8 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.18
+      - name: install podman
+        run: sudo apt-get -y install podman;alias docker=podman
       - name: install kind
         run: go install sigs.k8s.io/kind@v0.12.0
       - name: check version

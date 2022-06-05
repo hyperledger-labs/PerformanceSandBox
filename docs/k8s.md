@@ -11,6 +11,7 @@
 ## Introduce
 This document is a guidance for init a k8s cluster for performance sandbox. The k8s cluster should contains k8s, prometheus and jaeger. With following steps, you will have a k8s cluster basing on [kind](https://kind.sigs.k8s.io) with 
 [prometheus operator](https://github.com/prometheus-operator/kube-prometheus) and [jaeger operator](https://github.com/jaegertracing/jaeger-operator).
+Or you are able to use [minikube](https://minikube.sigs.k8s.io/docs/start/), and ensure start minikube with `--cni=bridge`
 
 You are free to skip some of the steps, if you want to deploy performance sandbox on your own k8s cluster or you already have a k8s cluster with [prometheus operator](https://github.com/prometheus-operator/kube-prometheus) and [jaeger operator](https://github.com/jaegertracing/jaeger-operator).
 
@@ -19,14 +20,20 @@ You are free to skip some of the steps, if you want to deploy performance sandbo
 - [git](https://github.com/)
 - [docker](https://www.docker.com/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [kind](https://kind.sigs.k8s.io)
+- [kind](https://kind.sigs.k8s.io) or [minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 ---
 
 ## Steps
-1. [kind](https://kind.sigs.k8s.io)
+1. start k8s cluster
+optional
+[kind](https://kind.sigs.k8s.io)
 ```shell
 ./infra.sh up
+```
+[minikube](https://minikube.sigs.k8s.io/docs/start/)
+```shell
+minikube start --cni=bridge && minikube addons enable ingress && minikube addons enable ingress-dns 
 ```
 
 optional, if you have a image listed in find image_list, you are able to run script below to load local image to kind.

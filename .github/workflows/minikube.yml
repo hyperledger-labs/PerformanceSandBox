@@ -1,11 +1,11 @@
-name: basicAssetWithTape
+name: minikube
 on:
   pull_request:
   push:
   schedule:
     - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
 jobs:
-  basicAssetWithTape:
+  minikube:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -14,16 +14,14 @@ jobs:
       - uses: actions/setup-go@main
         with:
           go-version: 1.18
-      - name: install kind
-        run: go install sigs.k8s.io/kind@v0.12.0
-      - name: check version
-        run: kind version
+      - name: install minikube
+        run: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && install minikube-linux-amd64 /usr/local/bin/minikube
       - name: install kubectl
         run: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       - name: check version
         run: kubectl version || true
-      - name: infra up
-        run: ./infra.sh up
+      - name: k8s
+        run: minikube start --cni=bridge && minikube addons enable ingress && minikube addons enable ingress-dns && alias kubectl="minikube kubectl --"
       - name: infra prometheus
         run: ./infra.sh prometheus
       - name: infra jaeger
@@ -56,5 +54,3 @@ jobs:
         run: kubectl describe po $(cat log.out|awk -F ' ' '{print $1}')
       - name: verify tape
         run: kubectl logs $(cat log.out|awk -F ' ' '{print $1}') -c tape
-      - name: cleanup
-        run: ./infra.sh down

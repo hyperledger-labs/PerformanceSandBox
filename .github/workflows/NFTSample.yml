@@ -1,11 +1,15 @@
-name: basicAssetWithTape
+name: bringYourChianCodeAsNFT
 on:
   pull_request:
   push:
   schedule:
     - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
+env:
+  TEST_NETWORK_CHAINCODE_IMAGE: localhost:5000/nftsample:latest
+  TEST_NETWORK_CHAINCODE_NAME: nftsample
+  TEST_NETWORK_CHAINCODE_LABEL: nft_1.0
 jobs:
-  basicAssetWithTape:
+  bringYourChianCodeAsNFT:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -38,14 +42,12 @@ jobs:
         run: sleep 60  
       - name: set up fabric channel
         run: cd ./SUT/fabric && ./network.sh channel
+      - name: build NFT image
+        run: cd ./SUT/fabric && ./network.sh buildchaincode ./chaincode/nftsamplecode
       - name: set up chaincode pod
         run: cd ./SUT/fabric && ./network.sh chaincode deploy
-      - name: invoke chaincode for test
-        run: cd ./SUT/fabric && ./network.sh chaincode invoke '{"Args":["CreateAsset","5","blue","35","tom","1000"]}' 
-      - name: query invoke result
-        run: cd ./SUT/fabric && ./network.sh chaincode query '{"Args":["ReadAsset","5"]}'
       - name: run Tape based traffic
-        run:  cd ./Traffic/fabric && ./tape.sh
+        run:  cd ./Traffic/fabric && ./tape.sh NFT
       - name: sleep a while
         run: sleep 60
       - name: verify pods

@@ -8,7 +8,7 @@ NS=default
 
 function main() {
   #const tape config sample
-  config_tape_sample
+  config_tape_sample $1
   #start tape
   rollout_tape_sample
 }
@@ -46,6 +46,10 @@ function config_tape_sample() {
   # tls cert
   # config file
   cp ./scripts/tapetemplate ./build/tape/tapeconfig.yaml
+  
+  if [ "${1}" == "NFT" ]; then
+    cp -f ./scripts/tapetemplateNFT ./build/tape/tapeconfig.yaml
+  fi
   cp ./scripts/Logic.rego ./build/tape/Logic.rego
 
   kubectl -n $NS delete configmap fabric-tape-sample-config || true
@@ -65,4 +69,4 @@ function rollout_tape_sample() {
   echo "Complete tape init"
 }
 
-main
+main $1

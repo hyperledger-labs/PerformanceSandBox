@@ -21,6 +21,7 @@ spec:
       containers:
         - name: main
           image: {{CHAINCODE_IMAGE}}
+          imagePullPolicy: IfNotPresent
           env:
             - name: CHAINCODE_SERVER_ADDRESS
               value: 0.0.0.0:9999

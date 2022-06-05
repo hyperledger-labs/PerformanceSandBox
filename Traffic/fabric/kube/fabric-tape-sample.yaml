@@ -17,17 +17,21 @@ spec:
       containers:
       - name: tape
         image: ghcr.io/hyperledger-twgc/tape
+        imagePullPolicy: IfNotPresent
+        ports:
+            - containerPort: 8080
         env:
           - name: TAPE_LOGLEVEL
             value: debug
         command:
           - tape
+          # - "endorsementOnly" for endorsement only mode for query
+          #- "--help"
           - "-c"
           - "/tmp/tapeconfig.yaml"
           - "-n"
           - "500"
-          #- sleep
-          #- "3600"
+          - "--prometheus"
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - name: configmap-volume
@@ -37,3 +41,36 @@ spec:
           configMap:
               name: fabric-tape-sample-config
   #restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tape
+  labels:
+    app: tape
+spec:
+  ports:
+    - name: metrics
+      port: 8080
+      protocol: TCP
+  selector:
+    app: tape
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tape
+  namespace: default
+  labels:
+    release: mypro  #Prometheus所选择的标签
+spec:
+  namespaceSelector: #监控的pod所在名称空间
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app: tape
+  endpoints:
+  - port: metrics
