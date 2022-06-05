@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: main
-        image: hyperledger/caliper:0.5.0-unstable-20220311182403
+        image: hyperledger/caliper:0.5.0
         env:
           - name: CALIPER_BIND_SUT
             value: fabric:2.2

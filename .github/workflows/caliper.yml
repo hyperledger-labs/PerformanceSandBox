@@ -1,0 +1,60 @@
+name: basicAssetWithCaliper
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
+jobs:
+  basicAssetWithCaliper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          submodules: true
+      - uses: actions/setup-go@main
+        with:
+          go-version: 1.18
+      - name: install kind
+        run: go install sigs.k8s.io/kind@v0.12.0
+      - name: check version
+        run: kind version
+      - name: install kubectl
+        run: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      - name: check version
+        run: kubectl version || true
+      - name: infra up
+        run: ./infra.sh up
+      - name: infra prometheus
+        run: ./infra.sh prometheus
+      - name: infra jaeger
+        run: ./infra.sh jaeger
+      - name: sleep as infra ready
+        run: sleep 60
+      - name: infra verify 
+        run: ./infra.sh verify
+      - name: Fabric network up
+        run: cd ./SUT/fabric && ./network.sh up
+      - name: sleep as pod ready
+        run: sleep 60  
+      - name: set up fabric channel
+        run: cd ./SUT/fabric && ./network.sh channel
+      - name: set up chaincode pod
+        run: cd ./SUT/fabric && ./network.sh chaincode deploy
+      - name: invoke chaincode for test
+        run: cd ./SUT/fabric && ./network.sh chaincode invoke '{"Args":["CreateAsset","5","blue","35","tom","1000"]}' 
+      - name: query invoke result
+        run: cd ./SUT/fabric && ./network.sh chaincode query '{"Args":["ReadAsset","5"]}'
+      - name: run Caliper based traffic
+        run:  cd ./Traffic/fabric && ./caliper.sh
+      - name: sleep a while
+        run: sleep 120
+      - name: verify pods
+        run: kubectl get po
+      - name: save pod status
+        run: kubectl get po | grep caliper > log.out
+      - name: verify tape
+        run: kubectl describe po $(cat log.out|awk -F ' ' '{print $1}')
+      - name: verify tape
+        run: kubectl logs $(cat log.out|awk -F ' ' '{print $1}') -c tape
+      - name: cleanup
+        run: ./infra.sh down

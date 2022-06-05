@@ -13,7 +13,7 @@ test:
           opts:
             transactionLoad: 2
         workload:
-          module: readAsset.js
+          module: /tmp/readAsset.js
           arguments:
             assets: 10
-            contractId: basic
+            contractId: asset-transfer-basic

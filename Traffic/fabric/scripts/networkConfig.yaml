@@ -7,7 +7,7 @@ caliper:
 channels:
   - channelName: mychannel
     contracts:
-    - id: basic
+    - id: asset-transfer-basic
 
 organizations:
   - mspid: Org1MSP
@@ -20,4 +20,4 @@ organizations:
           path: '/tmp/HLF_CERTIFICATE_ORG1'
     connectionProfile:
       path: '/tmp/connection.yaml'
-      discover: true
+      discover: false

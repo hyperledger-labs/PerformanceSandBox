@@ -6,7 +6,7 @@ class MyWorkload extends WorkloadModuleBase {
     constructor() {
         super();
     }
-    
+
     async initializeWorkloadModule(workerIndex, totalWorkers, roundIndex, roundArguments, sutAdapter, sutContext) {
         await super.initializeWorkloadModule(workerIndex, totalWorkers, roundIndex, roundArguments, sutAdapter, sutContext);
 
@@ -24,7 +24,7 @@ class MyWorkload extends WorkloadModuleBase {
             await this.sutAdapter.sendRequests(request);
         }
     }
-    
+
     async submitTransaction() {
         const randomId = Math.floor(Math.random()*this.roundArguments.assets);
         const myArgs = {
@@ -37,7 +37,7 @@ class MyWorkload extends WorkloadModuleBase {
 
         await this.sutAdapter.sendRequests(myArgs);
     }
-    
+
     async cleanupWorkloadModule() {
         for (let i=0; i<this.roundArguments.assets; i++) {
             const assetID = `${this.workerIndex}_${i}`;
