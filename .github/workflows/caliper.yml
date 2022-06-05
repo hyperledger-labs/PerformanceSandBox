@@ -55,6 +55,6 @@ jobs:
       - name: verify tape
         run: kubectl describe po $(cat log.out|awk -F ' ' '{print $1}')
       - name: verify tape
-        run: kubectl logs $(cat log.out|awk -F ' ' '{print $1}') -c tape
+        run: kubectl logs $(cat log.out|awk -F ' ' '{print $1}') -c main
       - name: cleanup
         run: ./infra.sh down
