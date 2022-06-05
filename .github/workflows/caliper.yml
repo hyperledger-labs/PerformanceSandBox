@@ -47,14 +47,14 @@ jobs:
       - name: run Caliper based traffic
         run:  cd ./Traffic/fabric && ./caliper.sh
       - name: sleep a while
-        run: sleep 120
+        run: sleep 240
       - name: verify pods
         run: kubectl get po
       - name: save pod status
         run: kubectl get po | grep caliper > log.out
-      - name: verify tape
+      - name: verify caliper
         run: kubectl describe po $(cat log.out|awk -F ' ' '{print $1}')
-      - name: verify tape
+      - name: verify caliper
         run: kubectl logs $(cat log.out|awk -F ' ' '{print $1}') -c main
       - name: cleanup
         run: ./infra.sh down
