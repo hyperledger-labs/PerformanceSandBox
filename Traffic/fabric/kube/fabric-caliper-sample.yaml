@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caliper
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true" 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caliper
+  template:
+    metadata:
+      labels:
+        app: caliper
+    spec:
+      containers:
+      - name: main
+        image: hyperledger/caliper:0.5.0
+        env:
+          - name: CALIPER_BIND_SUT
+            value: fabric:2.2
+          - name: CALIPER_BENCHCONFIG
+            value: /tmp/myAssetBenchmark.yaml
+          - name: CALIPER_NETWORKCONFIG
+            value: /tmp/networkConfig.yaml 
+        command:
+          #- ls
+          #- /tmp
+          - caliper
+          - launch
+          - manager
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: configmap-volume
+            mountPath: /tmp
+      volumes:
+        - name: configmap-volume
+          configMap:
+              name: fabric-caliper-sample-config
+  #restartPolicy: Always

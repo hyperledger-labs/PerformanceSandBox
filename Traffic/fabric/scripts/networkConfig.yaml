@@ -1,0 +1,24 @@
+name: Caliper test
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  - channelName: mychannel
+    contracts:
+    - id: asset-transfer-basic
+      contractID: asset-transfer-basic
+
+organizations:
+  - mspid: Org1MSP
+    identities:
+      certificates:
+      - name: 'Admin'
+        clientPrivateKey:
+          path: '/tmp/HLF_PRIVATE_KEY_ORG1'
+        clientSignedCert:
+          path: '/tmp/HLF_CERTIFICATE_ORG1'
+    connectionProfile:
+      path: '/tmp/connection.yaml'
+      discover: true
