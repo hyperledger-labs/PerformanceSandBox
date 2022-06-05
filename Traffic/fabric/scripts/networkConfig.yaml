@@ -8,16 +8,17 @@ channels:
   - channelName: mychannel
     contracts:
     - id: asset-transfer-basic
+      contractID: asset-transfer-basic
 
 organizations:
   - mspid: Org1MSP
     identities:
       certificates:
-      - name: 'User1'
+      - name: 'Admin'
         clientPrivateKey:
           path: '/tmp/HLF_PRIVATE_KEY_ORG1'
         clientSignedCert:
           path: '/tmp/HLF_CERTIFICATE_ORG1'
     connectionProfile:
       path: '/tmp/connection.yaml'
-      discover: false
+      discover: true
