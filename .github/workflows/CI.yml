@@ -1,9 +1,7 @@
 name: basicAssetWithTape
 on:
   pull_request:
-  push:
-  schedule:
-    - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
+
 jobs:
   basicAssetWithTape:
     runs-on: ubuntu-latest

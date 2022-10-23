@@ -1,9 +1,7 @@
 name: bringYourChianCodeAsNFT
 on:
   pull_request:
-  push:
-  schedule:
-    - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
+
 env:
   TEST_NETWORK_CHAINCODE_IMAGE: localhost:5000/nftsample:latest
   TEST_NETWORK_CHAINCODE_NAME: nftsample
