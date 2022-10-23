@@ -1,10 +1,5 @@
 # PerformanceSandBox
 
-[![basicAssetWithTape](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/CI.yml/badge.svg)](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/CI.yml)
-[![bringYourChianCodeAsNFT](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/NFTSample.yml/badge.svg)](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/NFTSample.yml)
-[![podman](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/Podman.yml/badge.svg)](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/Podman.yml)
-[![minikube](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/minikube.yml/badge.svg)](https://github.com/hyperledger-labs/PerformanceSandBox/actions/workflows/minikube.yml)
-
 ## Short Description
 The Performance Sandbox is a Sandbox for Hyperledger Projects Performance research usage. It allows easy use of performance related works with this sandbox lab.
 
