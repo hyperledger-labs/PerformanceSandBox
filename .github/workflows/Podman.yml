@@ -1,12 +1,12 @@
 name: podman
 on:
   pull_request:
-  push:
-  schedule:
-    - cron: '0 0 * * 5' # https://crontab.guru/#0_0_*_*_5
+
 jobs:
   podman:
     runs-on: ubuntu-latest
+    env:
+      KIND_EXPERIMENTAL_PROVIDER: podman kind create cluster
     steps:
       - uses: actions/checkout@main
         with:
@@ -25,9 +25,7 @@ jobs:
       - name: check version
         run: kubectl version || true
       - name: infra up
-        run: alias docker=podman;./infra.sh up
-        with: 
-          KIND_EXPERIMENTAL_PROVIDER: podman
+        run: alias docker=podman;./infra.sh up          
       - name: infra prometheus
         run: alias docker=podman;./infra.sh prometheus
       - name: infra jaeger
@@ -62,5 +60,3 @@ jobs:
         run: kubectl logs $(cat log.out|awk -F ' ' '{print $1}') -c tape
       - name: cleanup
         run: alias docker=podman;./infra.sh down
-        with: 
-          KIND_EXPERIMENTAL_PROVIDER: podman
