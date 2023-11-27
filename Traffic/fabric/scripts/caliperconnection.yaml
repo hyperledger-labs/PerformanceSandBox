@@ -1,0 +1,29 @@
+---
+name: test-network-org1
+version: 1.0.0
+client:
+  organization: Org1MSP
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  Org1MSP:
+    mspid: Org1MSP
+    peers:
+    - peer0.org1.example.com
+    certificateAuthorities:
+    - ca.org1.example.com
+peers:
+  peer0.org1.example.com:
+    url: grpcs://org1-peer1:7051
+    tlsCACerts:
+      path: /tmp/org1-tls-ca.pem
+certificateAuthorities:
+  ca.org1.example.com:
+    url: https://org1-ecert-ca:7054
+    caName: ca-org1-ecert-ca
+    tlsCACerts:
+      path: /tmp/org1-ecert-ca.pem
+    httpOptions:
+      verify: false
